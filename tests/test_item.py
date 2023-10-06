@@ -1,4 +1,5 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
+import csv
 import pytest
 from src.item import Item
 
@@ -23,3 +24,22 @@ def test_apply_discount(test_item):
     test_item.apply_discount()
     assert test_item.price == 8000.0
     assert test_item.apply_discount() is None
+
+
+def test_name_setter(item):
+    item.name = 'СуперСмартфон'
+    assert item._name == "СуперСмарт"
+
+
+def test_instantiate_from_csv():
+    with open('../items.csv', encoding='cp1251') as file:
+        read = csv.DictReader(file)
+        assert read is not None
+        for x in read:
+            assert "name" in x
+            assert "price" in x
+            assert "quantity" in x
+
+
+def test_instantiate_from_csv_error():
+    assert Item.instantiate_from_csv() is None
