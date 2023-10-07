@@ -15,7 +15,7 @@ class Item:
         """
         Создание экземпляра класса item.
         """
-        self.__name = name  # Название товара
+        self.name = name  # Название товара
         self.price = price  # Цена за единицу товара
         self.quantity = quantity  # Количество товара в магазине
         self.all.append(self)
