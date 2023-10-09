@@ -43,3 +43,11 @@ def test_instantiate_from_csv():
 
 def test_instantiate_from_csv_error():
     assert Item.instantiate_from_csv() is None
+
+
+def test__repr__(test_item):
+    assert repr(test_item) == "Item('iPad', 80000, 5)"
+
+
+def test__str__(test_item):
+    assert str(test_item) == 'iPad'

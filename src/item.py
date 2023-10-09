@@ -1,9 +1,5 @@
 import csv
 
-class InstantiateCSVError(Exception):
-    def __init__(self):
-        self.message = "Файл item.csv поврежден"
-
 class Item:
     """
     Класс для представления товара в магазине.
@@ -19,6 +15,12 @@ class Item:
         self.price = price  # Цена за единицу товара
         self.quantity = quantity  # Количество товара в магазине
         self.all.append(self)
+
+    def __repr__(self):
+        return f"{__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return f'{self.__name}'
 
     @property
     def name(self):
