@@ -2,11 +2,17 @@
 import csv
 import pytest
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
 def test_item():
     return Item("iPad", 80_000, 5)
+
+@pytest.fixture()
+def test_phone():
+    phone = Phone("iPhone 14", 120_000, 5, 2)
+    return phone
 
 
 def test_init(test_item):
@@ -51,3 +57,9 @@ def test__repr__(test_item):
 
 def test__str__(test_item):
     assert str(test_item) == 'iPad'
+
+
+def test__add__1(test_item, test_phone):
+    assert test_item + test_phone == 10
+    assert test_phone + test_phone == 10
+    assert test_item + 10 == ValueError
