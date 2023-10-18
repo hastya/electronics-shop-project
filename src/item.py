@@ -28,15 +28,14 @@ class Item:
         return self.quantity + other.quantity
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self.__name
 
     @name.setter
     def name(self, name):
         if len(name) > 10:
             self.__name = name[:10]
-        else:
-            self.__name = name
+        self.__name = name
 
     @classmethod
     def instantiate_from_csv(cls):
