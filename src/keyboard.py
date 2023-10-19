@@ -12,10 +12,15 @@ class LanguageMixin:
             self.language = "EN"
 
 
+# class Keyboard(Item, LanguageMixin):
+#     def __init__(self, name: str, price: float, quantity: int, language="EN"):
+#         super().__init__(name, price, quantity)
+#         self.__language = language
 class Keyboard(Item, LanguageMixin):
-    def __init__(self, name: str, price: float, quantity: int, language="EN"):
+
+    def __init__(self, name: str, price: float, quantity: int):
         super().__init__(name, price, quantity)
-        self.__language = language
+        LanguageMixin.__init__(self)
 
     @property
     def language(self):
